@@ -12,12 +12,41 @@ class YonkomasController < ApplicationController
   def show
     yonkoma = Yonkoma.where(id: params[:yonkoma_id])
 
+    @yonkomas = []
     datas = []
     yonkoma[0].komas.each do |koma|
+      koma = Hash.new
       img = koma.imgs[0]
-      serif = koma.serif[0]
-      datas.push({image: {image_url: img.image_url, page_url: img.page_url, x: img.x, y: img.y, h: img.h, w: img.w}, serif: {words: serif.str, x: serif.x, y: serif.y, h: serif.h, w: serif.w}})
+      image = Hash.new
+      image["url"] = img.image_url
+      image["link"] = img.image_url
+      x = img.x
+      y = img.y
+      w = img.w
+      h = img.h
+      image["position"] = "top:" + x.to_s + "px;right:" + y.to_s + "px;"
+      image["size"] = w.to_s + "x" + h.to_s
+      koma["img"] += img
+
+      srf = koma.serif[0]
+      serif = Hash.new
+      serif["str"] = srf.str
+      x = srf.x
+      y = srf.y
+      w = srf.w
+      h = srf.h
+      serif["position"] = "top:" + x.to_s + "px;right:" + y.to_s + "px;"
+      serif["size"] = w.to_s + "x" + h.to_s
+      koma["srf"] += [serif]
+
+      hukidashi = Hash.new
+      hukidashi["position"] = "top:0px;right:0px;"
+      hukidashi["size"] = "200x300"
+      koma["hukidashi"] += [hukidashi]
+
+      @yonkomas += [koma]
     end
+
   end
 
   # GET /yonkomas/new
