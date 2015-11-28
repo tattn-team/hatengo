@@ -1,5 +1,6 @@
 class YonkomasController < ApplicationController
   before_action :set_yonkoma, only: [:show, :edit, :update, :destroy]
+	skip_before_action :verify_authenticity_token
 
   # GET /yonkomas
   # GET /yonkomas.json
@@ -61,6 +62,13 @@ class YonkomasController < ApplicationController
   def destroy
 
   end
+
+	def search_image
+		nico = Nico::NicoImage.new
+		nico.login Rails.application.secrets.nico_email, Rails.application.secrets.nico_pass
+		result = nico.search [params[:q]]
+		render json: result
+	end
 
   private
     # Use callbacks to share common setup or constraints between actions.
