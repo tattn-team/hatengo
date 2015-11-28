@@ -10,31 +10,14 @@
   <script src="/javascripts/show.js"></script>
 <% end %>
 
-<!--
-  yonkoma
-  yonkoma.koma
-  yonkoma.imgs
-
-  yonkoma.serif
-
--->
-<!-- <div id="yonkoma">
+ <div id="yonkoma">
   <p id="title"><%= @title %></p>
   <% @yonkomas.each do |yonkoma| %>
-    <%= content_tag(:div, class: "koma", 'data-toggle':"popover", title:"転載元リンク", 'data-content':"<a href="+ yonkoma["img"]["page_url"] +">"+ "ニコニコ静画" + "</a>" ) do %>
-    <%= content_tag(:span, yonkoma["serif"]["str"], id:"serihu", style: serif["position"]) %>
-    <%= image_tag(yonkoma["img"]["image_url"], size: yonkoma["img"]["size"],id:"gazou",  style: yonkoma["img"]["position"],:alt => "イラスト画像") %>
-    <%= image_tag("hukidashi.png", id:"hukidashi",size: koma["hukidashi"]["size"],  style: koma["hukidashi"]["position"],:alt => "吹き出しの画像") %>
-  <% end %> -->
-  <% @komas.each do |koma|%>
-    <%= content_tag(:div, class: "koma", 'data-toggle':"popover", title:"元の絵の作者", 'data-content':"<a href="+ koma["creator_link"] +">"+ koma["creator"] + "</a>" ) do %>
-      <% koma["serihu"].each do |serihu| %>
-        <%= content_tag(:span, serihu["text"], id:"serihu", style: serihu["position"]) %>
-      <% end %>
-      <%= image_tag(koma["url"], size: koma["size"],id:"gazou",  style: koma["position"],:alt => "イラスト画像") %>
-      <%= image_tag("hukidashi.png", id:"hukidashi",size: koma["hukidashi"]["size"],  style: koma["hukidashi"]["position"],:alt => "吹き出しの画像") %>
-    <% end %>
-  <% end %> 
+    <%= content_tag(:div, class: "koma", 'data-toggle':"popover", title:"転載元リンク", 'data-content':"<a href="+ koma["img"]["link"] +">"+ "ニコニコ静画" + "</a>" ) do %>
+    <%= content_tag(:span, yonkoma["srf"]["str"], id:"serihu", style: yonkoma["srf"]["position"]) %>
+    <%= image_tag(yonkoma["img"]["url"], size: yonkoma["img"]["size"],id:"gazou",  style: yonkoma["img"]["position"], :alt => "イラスト画像") %>
+    <%= image_tag("hukidashi.png", id:"hukidashi",size: yonkoma["hukidashi"]["size"],  style: yonkoma["hukidashi"]["position"],:alt => "吹き出しの画像") %>
+  <% end %>
   <div id="last"></div>
 
 </div>
