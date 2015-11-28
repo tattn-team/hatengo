@@ -27,7 +27,11 @@ $(function() {
 		var results = [];
 
 		$(".yonkoma-box").each(function() {
-			var image_url = $(this).find(".img-yonkoma")[0].src;
+			var image = $($(this).find(".img-yonkoma")[0]);
+			var image_x = image.position().left; // -15
+			var image_y = image.position().top;
+			console.log(image_x);
+			var image_url = image.src;
 			var serif = $($(this).find(".serif")[0]).text();
 			results.push({ image_url: image_url, serif: serif});
 		});
@@ -46,7 +50,11 @@ $(function() {
 			}
 		});
 
+		var title = $("#input-title").val();
+
 		return false;
-	})
+	});
+
+	$('.img-yonkoma').draggable();
 });
 

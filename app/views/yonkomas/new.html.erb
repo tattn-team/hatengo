@@ -34,6 +34,8 @@
 
   <script src="../javascripts/edit_yonkoma.js"></script>
   <script src="../javascripts/isearch.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
 <% end %>
 
 
@@ -59,7 +61,7 @@
       <div class="form-group">
         <label class="control-label col-xs-3">作品名</label>
         <div class="col-xs-9">
-          <input type="text" name="title" class="form-control">
+          <input type="text" id="input-title" name="title" class="form-control">
         </div>
       </div>
       <div class="form-group">
@@ -77,7 +79,7 @@
   <div class="container">
     <div class=" title">
       <h2>内容の作成</h2>
-      <p>キャラクターと吹き出しの内容を入力して内容を作成してください。</p>
+      <p>キャラクターと吹き出しの内容を入力してください。</p>
     </div>
 
     <% 4.times do |n| %>

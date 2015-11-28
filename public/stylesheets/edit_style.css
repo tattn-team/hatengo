@@ -6,9 +6,15 @@ body {
 	// margin-top: 3em !important;
 }
 
+.frame-yonkoma {
+	width: 540px;
+	height: 360px;
+	overflow:hidden;
+}
+
 .next-caret {
 	font-size: 3em;
-	color: #FFF;
+	color: #181A1C;
   // border-top:   solid 40px #FFF;
   // border-left:  solid 40px transparent;
   // border-right: solid 40px transparent;
