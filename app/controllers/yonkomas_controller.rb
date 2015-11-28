@@ -12,6 +12,41 @@ class YonkomasController < ApplicationController
   def show
     yonkoma = Yonkoma.where(id: params[:yonkoma_id])
 
+    @yonkomas = []
+    datas = []
+    yonkoma[0].komas.each do |koma|
+      koma = Hash.new
+      img = koma.imgs[0]
+      image = Hash.new
+      image["url"] = img.image_url
+      image["link"] = img.image_url
+      x = img.x
+      y = img.y
+      w = img.w
+      h = img.h
+      image["position"] = "top:" + x.to_s + "px;right:" + y.to_s + "px;"
+      image["size"] = w.to_s + "x" + h.to_s
+      koma["img"] += img
+
+      srf = koma.serif[0]
+      serif = Hash.new
+      serif["str"] = srf.str
+      x = srf.x
+      y = srf.y
+      w = srf.w
+      h = srf.h
+      serif["position"] = "top:" + x.to_s + "px;right:" + y.to_s + "px;"
+      serif["size"] = w.to_s + "x" + h.to_s
+      koma["srf"] += [serif]
+
+      hukidashi = Hash.new
+      hukidashi["position"] = "top:0px;right:0px;"
+      hukidashi["size"] = "200x300"
+      koma["hukidashi"] += [hukidashi]
+
+      @yonkomas += [koma]
+    end
+
   end
 
   # GET /yonkomas/new
@@ -39,18 +74,18 @@ class YonkomasController < ApplicationController
 =end
 
     yonkoma = Yonkoma.create
-    koma1 = yonkoma.komas.create
-    koma1.imgs.create(image_url: params[:i_url1], page_url: params[:p_url1], x: params[:i_x1], y: params[:i_y1], h: params[:i_h1], w: params[:i_w1])
-    koma1.serifs.create(str: params[:serif1],  x: params[:s_x1], y: params[:s_y1], h: params[:s_h1], w: params[:s_w1])
-    koma2 = yonkoma.komas.create
-    koma2.imgs.create(image_url: params[:i_url2], page_url: params[:p_url2], x: params[:i_x2], y: params[:i_y2], h: params[:i_h2], w: params[:i_w2])
-    koma2.serifs.create(str: params[:serif2],  x: params[:s_x2], y: params[:s_y2], h: params[:s_h2], w: params[:s_w2])
-    koma3 = yonkoma.komas.create
-    koma3.imgs.create(image_url: params[:i_url3], page_url: params[:p_url3], x: params[:i_x3], y: params[:i_y3], h: params[:i_h3], w: params[:i_w3])
-    koma3.serifs.create(str: params[:serif3],  x: params[:s_x3], y: params[:s_y3], h: params[:s_h3], w: params[:s_w3])
-    koma4 = yonkoma.komas.create
-    koma4.imgs.create(image_url: params[:i_url4], page_url: params[:p_url4], x: params[:i_x4], y: params[:i_y4], h: params[:i_h4], w: params[:i_w4])
-    koma4.serifs.create(str: params[:serif4],  x: params[:s_x4], y: params[:s_y4], h: params[:s_h4], w: params[:s_w4])
+    koma1 = yonkoma.koma.create
+    koma1.img.create(image_url: params[:i_url1], page_url: params[:p_url1], x: params[:i_x1], y: params[:i_y1], h: params[:i_h1], w: params[:i_w1])
+    koma1.serif.create(str: params[:serif1],  x: params[:s_x1], y: params[:s_y1], h: params[:s_h1], w: params[:s_w1])
+    koma2 = yonkoma.koma.create
+    koma1.img.create(image_url: params[:i_url2], page_url: params[:p_url2], x: params[:i_x2], y: params[:i_y2], h: params[:i_h2], w: params[:i_w2])
+    koma1.serif.create(str: params[:serif2],  x: params[:s_x2], y: params[:s_y2], h: params[:s_h2], w: params[:s_w2])
+    koma3 = yonkoma.koma.create
+    koma1.img.create(image_url: params[:i_url3], page_url: params[:p_url3], x: params[:i_x3], y: params[:i_y3], h: params[:i_h3], w: params[:i_w3])
+    koma1.serif.create(str: params[:serif3],  x: params[:s_x3], y: params[:s_y3], h: params[:s_h3], w: params[:s_w3])
+    koma4 = yonkoma.koma.create
+    koma1.img.create(image_url: params[:i_url4], page_url: params[:p_url4], x: params[:i_x4], y: params[:i_y4], h: params[:i_h4], w: params[:i_w4])
+    koma1.serif.create(str: params[:serif4],  x: params[:s_x4], y: params[:s_y4], h: params[:s_h4], w: params[:s_w4])
   end
 
   # PATCH/PUT /yonkomas/1
