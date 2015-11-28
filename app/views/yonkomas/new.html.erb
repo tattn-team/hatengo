@@ -1,5 +1,97 @@
-<h1>New Yonkoma</h1>
+<%# <%= render 'form' %>
 
-<%= render 'form' %>
+<% content_for :title do %>
+  四コマの作成
+<% end %>
+<% content_for :stylesheet do %>
+  <!-- Load Roboto font -->
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  <!-- Load css styles -->
+  <!-- <link rel="stylesheet" href="/stylesheets/pluton/style.css" /> -->
+  <link rel="stylesheet" href="/stylesheets/pluton/pluton.css" />
+  <!--[if IE 7]>
+    <link rel="stylesheet" type="text/css" href="css/pluton-ie7.css" />
+  <![endif]-->
+  <link rel="stylesheet" href="/stylesheets/pluton/jquery.cslider.css" />
+  <link rel="stylesheet" href="/stylesheets/pluton/jquery.bxslider.css" />
+  <link rel="stylesheet" href="/stylesheets/pluton/animate.css" />
 
-<%= link_to 'Back', yonkomas_path %>
+  <link rel="stylesheet" href="/stylesheets/edit_style.css" />
+<% end %>
+<% content_for :javascript do %>
+  <!-- Include javascript -->
+  <script src="../javascripts/jquery.mixitup.js"></script>
+  <script src="../javascripts/modernizr.custom.js"></script>
+  <script src="../javascripts/jquery.bxslider.js"></script>
+  <script src="../javascripts/jquery.cslider.js"></script>
+  <script src="../javascripts/jquery.placeholder.js"></script>
+  <script src="../javascripts/jquery.inview.js"></script>
+  <!-- css3-mediaqueries.js for IE8 or older -->
+  <!--[if lt IE 9]>
+    <script src="javascripts/respond.min.js"></script>
+  <![endif]-->
+  <script src="../javascripts/app.js"></script>
+
+  <script src="../javascripts/edit_yonkoma.js"></script>
+<% end %>
+
+<div class="section secondary-section" id="service">
+  <!-- <div class="triangle"></div> -->
+  <div class="container">
+    <div class=" title">
+      <h1>四コマを作成</h1>
+      <p>Explain about how to create</p>
+    </div>
+  </div>
+</div>
+
+<div class="section primary-section">
+  <div class="triangle"></div>
+  <div class="container">
+    <div class=" title">
+      <h2>設定</h2>
+      <p>作品名と登場人物を入力してください</p>
+    </div>
+    <div class="form-horizontal">
+      <div class="form-group">
+        <label class="control-label col-xs-3">作品名</label>
+        <div class="col-xs-9">
+          <input type="text" name="title" class="form-control">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-xs-3">登場人物1</label>
+        <div class="col-xs-9">
+          <input type="text" name="charactor" class="form-control">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section secondary-section">
+  <div class="triangle"></div>
+  <div class="container">
+    <div class=" title">
+      <h2>内容の作成</h2>
+      <p>キャラクターと吹き出しの内容を入力して内容を作成してください。</p>
+    </div>
+
+    <% 4.times do |n| %>
+      <%= render 'edit_yonkoma' %>
+      <% if n != 3 %>
+        <div class="text-center">
+          <div class="next-caret">▼</div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div class="centered">
+  <p class="price-text">編集が終了したら以下の投稿ボタンを押してください</p>
+  <a href="#" class="button button-ps">投稿</a>
+  <a href="#" class="button">キャンセル</a>
+</div>
+
+<%= link_to '戻る', yonkomas_path %>

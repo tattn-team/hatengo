@@ -14,7 +14,7 @@ class YonkomasController < ApplicationController
 
   # GET /yonkomas/new
   def new
-    @yonkoma = Yonkoma.new
+    # @yonkoma = Yonkoma.new
   end
 
   # GET /yonkomas/1/edit

@@ -1,0 +1,16 @@
+body {
+	background-color: #FDCD00;
+}
+
+.yonkoma-box {
+	// margin-top: 3em !important;
+}
+
+.next-caret {
+	font-size: 3em;
+	color: #FFF;
+  // border-top:   solid 40px #FFF;
+  // border-left:  solid 40px transparent;
+  // border-right: solid 40px transparent;
+}
+
