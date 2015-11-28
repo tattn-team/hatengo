@@ -33,7 +33,10 @@
   <script src="../javascripts/app.js"></script>
 
   <script src="../javascripts/edit_yonkoma.js"></script>
+  <script src="../javascripts/isearch.js"></script>
 <% end %>
+
+
 
 <div class="section secondary-section" id="service">
   <!-- <div class="triangle"></div> -->
@@ -90,8 +93,8 @@
 
 <div class="centered">
   <p class="price-text">編集が終了したら以下の投稿ボタンを押してください</p>
-  <a href="#" class="button button-ps">投稿</a>
-  <a href="#" class="button">キャンセル</a>
+  <%= button_to '投稿', yonkomas_path(params:params), method: :post, form: {id:"submit"}, class:"button button-ps" %>
+  <%= link_to 'キャンセル', yonkomas_path, class: "button" %>
 </div>
 
 <%= link_to '戻る', yonkomas_path %>
