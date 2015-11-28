@@ -1,24 +1,21 @@
 <p id="notice"><%= notice %></p>
+
+<% content_for :stylesheet do %>
+  <!-- Load Roboto font -->
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/stylesheets/show.css" />
+<% end %>
+<% content_for :javascript do %>
+  <!-- Include javascript -->
+  <script src="/javascripts/show.js"></script>
+<% end %>
+
 <div id="yonkoma">
-  <p id="title"><%= "@title" %></p>
-  <div class="koma" data-toggle="popover" title="転載元"
-  data-content="<a href=\'http://localhost:3000\'>作者の名前</a>">
-    <% pos = "position:relative;top:" + "@y" + ";right:" + "@x" + ";" %>
-    <%= image_tag("sample_dog.jpg", size: "@size",  style: "pos",:alt => "アイコン") %>
-  </div>
-  <div class="koma" data-toggle="popover" title="転載元"
-  data-content="<a href=\'http://localhost:3000\'>作者の名前</a>">
-    <% pos = "position:relative;top:" + "@y" + ";right:" + "@x" + ";" %>
-    <%= image_tag("sample_dog.jpg", size: "@size",  style: pos,:alt => "アイコン") %>
-  </div>
-  <div class="koma" data-toggle="popover" title="転載元"
-  data-content="<a href=\'http://localhost:3000\'>作者の名前</a>">
-    <% pos = "position:relative;top:" + "@y" + ";right:" + "@x" + ";" %>
-    <%= image_tag("sample_dog.jpg", size: "@size",  style: pos,:alt => "アイコン") %>
-  </div>
-  <div class="koma" id="tag" data-toggle="popover" title="転載元"
-  data-content="<a href=\'http://localhost:3000\'>作者の名前</a>">
-    <% pos = "position:relative;top:" + "@y" + ";right:" + "@x" + ";" %>
-    <%= image_tag("sample_dog.jpg", size: "@size",  style: pos,:alt => "アイコン") %>
-  </div>
+  <p id="title"><%= @title %></p>
+  <% @komas.each do |koma|%>
+    <div class="koma" data-toggle="popover" title="転載元"data-content="<a href=\'http://localhost:3000\'>作者の名前</a>">
+      <%= image_tag(koma["url"], size: koma["size"],  style: koma["position"],:alt => "コマの画像") %>
+    </div> 
+  <% end %>
+  <div id="last"></div>
 </div>
