@@ -14,7 +14,7 @@ class YonkomasController < ApplicationController
 
   # GET /yonkomas/new
   def new
-    # @yonkoma = Yonkoma.new
+    @yonkoma = Yonkoma.new
   end
 
   # GET /yonkomas/1/edit
@@ -69,6 +69,6 @@ class YonkomasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def yonkoma_params
-      params[:yonkoma]
+      params.require(:user_id)
     end
 end
