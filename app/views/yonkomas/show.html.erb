@@ -13,9 +13,20 @@
 <div id="yonkoma">
   <p id="title"><%= @title %></p>
   <% @komas.each do |koma|%>
-    <div class="koma" data-toggle="popover" title="転載元"data-content="<a href=\'http://localhost:3000\'>作者の名前</a>">
-      <%= image_tag(koma["url"], size: koma["size"],  style: koma["position"],:alt => "コマの画像") %>
-    </div> 
+    <%= content_tag(:div, class: "koma", 'data-toggle':"popover", title:"元の絵の作者", 'data-content':"<a href="+ koma["creator_link"] +">"+ koma["creator"] + "</a>" ) do %>
+
+      <% koma["serihu"].each do |serihu| %>
+        <%= content_tag(:span, serihu["text"], id:"serihu", style: serihu["position"]) %>
+      <% end %>
+      
+      <%= image_tag(koma["url"], size: koma["size"],id:"gazou",  style: koma["position"],:alt => "イラスト画像") %>
+      
+      <%= image_tag("hukidashi.png", id:"hukidashi",size: koma["hukidashi"]["size"],  style: koma["hukidashi"]["position"],:alt => "吹き出しの画像") %>
+
+    <% end %>
+
   <% end %>
+
   <div id="last"></div>
+
 </div>
