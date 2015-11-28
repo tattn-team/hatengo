@@ -1,6 +1,7 @@
 class CreateImgs < ActiveRecord::Migration
   def change
     create_table :imgs do |t|
+      t.integer :koma_id
       t.string :image_url, null: false
       t.string :page_url, null: false
       t.integer :x, default: 0
