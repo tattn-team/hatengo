@@ -12,6 +12,8 @@ module Nico
         word += keyword + " "
       end
       results = NicoUtil::Illust.search word, _limit: 10
+      return [] unless results[:data]
+
       urls = []
       results[:data].each do |result|
         image = @nico.illust result[:contentId]
