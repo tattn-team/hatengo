@@ -1,6 +1,7 @@
 class CreateSerifs < ActiveRecord::Migration
   def change
     create_table :serifs do |t|
+      t.integer :koma_id
       t.string :str, null: false
       t.integer :x, default: 0
       t.integer :y, default: 0

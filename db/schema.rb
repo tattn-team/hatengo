@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 20151128070715) do
 
   create_table "imgs", force: :cascade do |t|
+    t.integer  "koma_id"
     t.string   "image_url",                null: false
     t.string   "page_url",                 null: false
     t.integer  "x",          default: 0
@@ -25,13 +26,13 @@ ActiveRecord::Schema.define(version: 20151128070715) do
   end
 
   create_table "komas", force: :cascade do |t|
-    t.integer  "yonkoma_id", null: false
-    t.integer  "index",      null: false
+    t.integer  "yonkoma_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "serifs", force: :cascade do |t|
+    t.integer  "koma_id"
     t.string   "str",                      null: false
     t.integer  "x",          default: 0
     t.integer  "y",          default: 0
