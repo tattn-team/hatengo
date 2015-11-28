@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   root 'top#index'
 
-  resources :yonkomas
+  resources :yonkomas do
+    collection do
+      get 'search_image'
+    end
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,10 +1,11 @@
 class YonkomasController < ApplicationController
   before_action :set_yonkoma, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
 
   # GET /yonkomas
   # GET /yonkomas.json
   def index
-    @yonkomas = Yonkoma.all
+    # @yonkomas = Yonkoma.all
   end
 
   # GET /yonkomas/1
@@ -24,17 +25,21 @@ class YonkomasController < ApplicationController
   # POST /yonkomas
   # POST /yonkomas.json
   def create
-    @yonkoma = Yonkoma.new(yonkoma_params)
+    puts params
+     
+    # @yonkoma = Yonkoma.new(yonkoma_params)
+    #
+    # respond_to do |format|
+    #   if @yonkoma.save
+    #     format.html { redirect_to @yonkoma, notice: 'Yonkoma was successfully created.' }
+    #     format.json { render :show, status: :created, location: @yonkoma }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @yonkoma.errors, status: :unprocessable_entity }
+    #   end
+    # end
 
-    respond_to do |format|
-      if @yonkoma.save
-        format.html { redirect_to @yonkoma, notice: 'Yonkoma was successfully created.' }
-        format.json { render :show, status: :created, location: @yonkoma }
-      else
-        format.html { render :new }
-        format.json { render json: @yonkoma.errors, status: :unprocessable_entity }
-      end
-    end
+    redirect_to :yonkomas
   end
 
   # PATCH/PUT /yonkomas/1
@@ -61,14 +66,21 @@ class YonkomasController < ApplicationController
     end
   end
 
+  def search_image
+    nico = Nico::NicoImage.new
+    nico.login Rails.application.secrets.nico_email, Rails.application.secrets.nico_pass 
+    result = nico.search [params[:q]]
+    render json: result
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_yonkoma
-      @yonkoma = Yonkoma.find(params[:id])
+      # @yonkoma = Yonkoma.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def yonkoma_params
-      params[:yonkoma]
+      # params[:yonkoma]
     end
 end
