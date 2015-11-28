@@ -1,13 +1,76 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Hatengo</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <meta charset=utf-8>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Hatengo" %></title>
+    <%= csrf_meta_tags %>
 
-<%= yield %>
+    <%= stylesheet_link_tag "application", media: "all" %>
 
-</body>
+    <!-- For third-generation iPad with high-resolution Retina display: -->
+    <%= favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
+    <!-- For iPhone with high-resolution Retina display: -->
+    <%= favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114' %>
+    <!-- For first- and second-generation iPad: -->
+    <%= favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72' %>
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <%= favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
+    <!-- For all other devices -->
+    <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
+
+    <%= yield(:stylesheet) if content_for?(:stylesheet) %>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <!-- Main navigation -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample">
+              <i class="icon-menu"></i>
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="brand">
+              <%= image_tag asset_path "logo.png", width: 120, height: 40, alt: "Logo" %>
+            </a>
+          </div>
+
+          <div class="collapse navbar-collapse navbar-right pull-right" id="navbarEexample">
+            <ul class="nav navbar-nav" id="top-navigation">
+              <li class="active"><a href="#home">Home</a></li>
+              <li><a href="#service">Services</a></li>
+              <li><a href="#portfolio">Portfolio</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#clients">Clients</a></li>
+              <li><a href="#price">Price</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%= yield %>
+
+    <!-- Footer section start -->
+    <div class="footer">
+      <p>&copy; 2015 くまさんチーム</p>
+    </div>
+    <!-- Footer section end -->
+    <!-- ScrollUp button start -->
+    <div class="scrollup">
+      <a href="#">
+        <i class="icon-up-open"></i>
+      </a>
+    </div>
+    <!-- ScrollUp button end -->
+
+    <%= javascript_include_tag "application" %>
+    <%= yield(:javascript) if content_for?(:javascript) %>
+  </body>
 </html>

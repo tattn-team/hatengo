@@ -23,6 +23,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'jquery-rails'
 
 gem 'rspec-rails'
 gem 'factory_girl_rails'
