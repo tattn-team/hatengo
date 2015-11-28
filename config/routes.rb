@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  resources :serifs
-  resources :imgs
-  resources :komas
-  resources :yonkomas
-  resources :users
   root 'top#index'
 
   resources :yonkomas do

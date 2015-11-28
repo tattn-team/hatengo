@@ -12,7 +12,6 @@ class YonkomasController < ApplicationController
   # GET /yonkomas/1.json
   def show
     yonkoma = Yonkoma.where(id: params[:yonkoma_id])
-
   end
 
   # GET /yonkomas/new
