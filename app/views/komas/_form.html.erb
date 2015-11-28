@@ -1,0 +1,17 @@
+<%= form_for(@koma) do |f| %>
+  <% if @koma.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@koma.errors.count, "error") %> prohibited this koma from being saved:</h2>
+
+      <ul>
+      <% @koma.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
