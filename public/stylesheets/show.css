@@ -1,0 +1,27 @@
+body{
+  background-color: #181A1C;
+}
+#yonkoma{
+  background-color: #181A1C;
+  padding: 10px;
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family:'Porta';
+  font-size: 36px;
+  text-align: center;
+}
+
+.koma{
+  background-color: #181A1C;
+  width: 600px;
+  height: 400px;
+  border-top: medium solid #FECE1A;
+  border-right: medium solid #FECE1A;
+  border-left: medium solid #FECE1A;
+}
+
+#last{
+  border-top: medium solid #FECE1A;
+  width: 600px;
+}
