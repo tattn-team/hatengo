@@ -1,3 +1,3 @@
 class Yonkoma < ActiveRecord::Base
-  has_many :koma, dependent: :destroy
+  has_many :komas, dependent: :destroy
 end
