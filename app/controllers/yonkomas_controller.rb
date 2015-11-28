@@ -9,8 +9,8 @@ class YonkomasController < ApplicationController
 
   # GET /yonkomas/1
   # GET /yonkomas/1.json
-  def show yonkoma_id
-    yonkoma = Yonkoma.where(id: id)
+  def show
+    yonkoma = Yonkoma.where(id: params[:yonkoma_id])
 
   end
 
@@ -26,28 +26,31 @@ class YonkomasController < ApplicationController
   # POST /yonkomas
   # POST /yonkomas.json
   def create
-    (i_url1, p_url1, i_x1, i_y1, i_h1, i_w1,
-    serif1, s_x1, s_y1, s_h1, s_w1,
+=begin
+パラメータ
+    i_url1, p_url1, i_x1, i_y1, i_h1, i_w1,　画像
+    serif1, s_x1, s_y1, s_h1, s_w1,　セリフ
     i_url2, p_url2, i_x2, i_y2, i_h2, i_w2,
     serif2, s_x2, s_y2, s_h2, s_w2,
     i_url3, p_url3, ix_3, i_y3, i_h3, i_w3,
     serif3, s_x3, s_y3, s_h3, s_w3,
     i_url4, p_url4, i_x4, i_y4, i_h4, i_w4,
-    serif4, s_x4, s_y4, s_h4, s_w4)
+    serif4, s_x4, s_y4, s_h4, s_w4
+=end
 
     yonkoma = Yonkoma.create
     koma1 = yonkoma.Koma.create
-    koma1.Img.create(image_url: i_url1, page_url: p_url1, x: i_x1, y: i_y1, h: i_h1, w: i_w1)
-    koma1.Serif.create(str: serif1,  x: s_x1, y: s_y1, h: s_h1, w: s_w1)
+    koma1.Img.create(image_url: params[:i_url1], page_url: params[:p_url1], x: params[:i_x1], y: params[:i_y1], h: params[:i_h1], w: params[:i_w1])
+    koma1.Serif.create(str: params[:serif1],  x: params[:s_x1], y: params[:s_y1], h: params[:s_h1], w: params[:s_w1])
     koma2 = yonkoma.Koma.create
-    koma2.Img.create(image_url: i_url2, page_url: p_url2, x: i_x2, y: i_y2, h: i_h2, w: i_w2)
-    koma2.Serif.create(str: serif2,  x: s_x2, y: s_y2, h: s_h2, w: s_w2)
+    koma1.Img.create(image_url: params[:i_url2], page_url: params[:p_url2], x: params[:i_x2], y: params[:i_y2], h: params[:i_h2], w: params[:i_w2])
+    koma1.Serif.create(str: params[:serif2],  x: params[:s_x2], y: params[:s_y2], h: params[:s_h2], w: params[:s_w2])
     koma3 = yonkoma.Koma.create
-    koma3.Img.create(image_url: i_url3, page_url: p_url3, x: i_x3, y: i_y3, h: i_h3, w: i_w3)
-    koma3.Serif.create(str: serif3,  x: s_x3, y: s_y3, h: s_h3, w: s_w3)
+    koma1.Img.create(image_url: params[:i_url3], page_url: params[:p_url3], x: params[:i_x3], y: params[:i_y3], h: params[:i_h3], w: params[:i_w3])
+    koma1.Serif.create(str: params[:serif3],  x: params[:s_x3], y: params[:s_y3], h: params[:s_h3], w: params[:s_w3])
     koma4 = yonkoma.Koma.create
-    koma4.Img.create(image_url: i_url4, page_url: p_url4, x: i_x4, y: i_y4, h: i_h4, w: i_w4)
-    koma4.Serif.create(str: serif4,  x: s_x4, y: s_y4, h: s_h4, w: s_w4)
+    koma1.Img.create(image_url: params[:i_url4], page_url: params[:p_url4], x: params[:i_x4], y: params[:i_y4], h: params[:i_h4], w: params[:i_w4])
+    koma1.Serif.create(str: params[:serif4],  x: params[:s_x4], y: params[:s_y4], h: params[:s_h4], w: params[:s_w4])
   end
 
   # PATCH/PUT /yonkomas/1
